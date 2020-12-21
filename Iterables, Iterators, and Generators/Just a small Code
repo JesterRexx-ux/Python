@@ -1,0 +1,8 @@
+s='ABCDEFGHI'
+it=iter(s)  #Build an iterator 'it' from the iterable
+while True:
+    try:
+        print(next(it)) # Repeatedly call next on the iterator to obtain the next item
+    except StopIteration: # The iterator raises StopIteration when there are no further items
+        del it  # Release reference to 'it' --the iterator objects is discarded
+        break  # Exit the loop
