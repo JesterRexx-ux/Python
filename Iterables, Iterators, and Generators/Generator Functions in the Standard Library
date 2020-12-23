@@ -1,0 +1,41 @@
+## Some of the codes from itertools and how it works
+
+def vowel(c):
+    return c.lower() in 'aeiou'
+
+print(list(filter(vowel,'Aardvark')))
+
+import itertools
+print(list(itertools.filterfalse(vowel,'Aardvark')))
+
+print(list(itertools.dropwhile(vowel,'Aardvark')))
+
+print(list(itertools.takewhile(vowel,'Aardvark')))
+
+print(list(itertools.compress('Aardvark',(1,0,1,1,0,1))))
+
+print(list(itertools.islice('Aardvark',4)))
+
+print(list(itertools.islice('Aardvark',4,7)))
+
+print(list(itertools.islice('Aardvark',1,7,2)))
+
+rp=itertools.repeat(7)
+print(next(rp))
+
+print(list(itertools.combinations('ABCD',3)))
+
+#Rearrannging Generator Function
+
+print(list(itertools.groupby('LLLAAAGGG')))
+
+for char,group in itertools.groupby('LLLLLAAAAAGGGGGG'):
+    print(char,'->>',list(group))  # grouping like alphabet separately
+
+
+animals=['duck','eagle','rat','giraffe','bear','bat','dolphine','shark','lion']
+animals.sort(key=len)
+print(animals)
+
+for length,group in itertools.groupby(animals,len):
+    print(length,'-->>',list(group))
