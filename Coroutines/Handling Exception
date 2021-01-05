@@ -1,0 +1,26 @@
+class DemoExcption(Exception):
+    '''An exception type for the demonsttation'''
+
+def demo_exc_handling():
+    print('--> coroutine started..!!')
+    while True:
+        try:
+            x=yield
+        except DemoExcption:
+            print('***DemoException handles. COntinuing...')
+        else:
+            print('---> coroutine recieved: {!r}'.format(x))
+    raise RuntimeError('This line should never run..!!')
+
+
+exc=demo_exc_handling()
+print(next(exc))
+print('----')
+print(exc.send(11))
+print('----')
+print(exc.send(22))
+print('----')
+print(exc.close())
+
+from inspect import getgeneratorstate
+print(getgeneratorstate(exc))
