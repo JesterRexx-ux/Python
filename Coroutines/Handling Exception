@@ -24,3 +24,19 @@ print(exc.close())
 
 from inspect import getgeneratorstate
 print(getgeneratorstate(exc))
+
+
+'''Throwing DemoException into demo_exc_handling does not break it'''
+
+exc=demo_exc_handling()
+print(exc)
+print(exc.send(11))
+print(exc.throw(DemoExcption))
+print(getgeneratorstate(exc))
+
+
+'''Coroutines terminates if it can't handle an exception thrown into it'''
+exc=demo_exc_handling()
+print(next(exc))
+print(exc.send(11))
+print(exc.throw(ZeroDivisionError))
